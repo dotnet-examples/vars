@@ -1,0 +1,33 @@
+(lldb) clrstack -l
+OS Thread Id: 0xaf9d14 (1)
+        Child SP               IP Call Site
+000000016B6A26E0 0000000108981E94 Vars01.Program.Main(System.String[]) [/Users/gdc/Repos/dotnet-examples/vars/Vars01/Program.cs @ 43]
+    LOCALS:
+        0x000000016B6A2704 = 0x000000000000007f
+        0x000000016B6A2700 = 0x00000000000000ff
+        0x000000016B6A26FC = 0x0000000000007fff
+        0x000000016B6A26F8 = 0xffffffffffffffff
+        0x000000016B6A26F4 = 0x000000007fffffff
+        0x000000016B6A26F0 = 0x00000000ffffffff
+        0x000000016B6A26E8 = 0x7fffffffffffffff
+        0x000000016B6A26E0 = 0xffffffffffffffff
+(lldb) memory read 0x000000016B6A26E0 -c 0x30
+0x16b6a26e0: ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 7f  ................
+0x16b6a26f0: ff ff ff ff ff ff ff 7f ff ff 00 00 ff 7f 00 00  ................
+0x16b6a2700: ff 00 00 00 7f 00 00 00 f0 cf 00 40 01 00 00 00  ...........@....
+(lldb) memory read -c 1 0x000000016B6A2704
+0x16b6a2704: 7f                                               .
+(lldb) memory read -c 1 0x000000016B6A2700
+0x16b6a2700: ff                                               .
+(lldb) memory read -c 2 0x000000016B6A26FC
+0x16b6a26fc: ff 7f                                            ..
+(lldb) memory read -c 2 0x000000016B6A26F8
+0x16b6a26f8: ff ff                                            ..
+(lldb) memory read -c 4 0x000000016B6A26F4
+0x16b6a26f4: ff ff ff 7f                                      ....
+(lldb) memory read -c 4 0x000000016B6A26F0
+0x16b6a26f0: ff ff ff ff                                      ....
+(lldb) memory read -c 8 0x000000016B6A26E8
+0x16b6a26e8: ff ff ff ff ff ff ff 7f                          ........
+(lldb) memory read -c 8 0x000000016B6A26E0
+0x16b6a26e0: ff ff ff ff ff ff ff ff                          ........        
